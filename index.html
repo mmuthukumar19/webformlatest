@@ -1,17 +1,13 @@
 <style type="text/css">
 	/* COMMON STYLES */
-
 	:root,
-	html {
-		font-size: 10px;
+		html {
+		font-size: 10px; 
 	}
-
 	* {
-		padding: 0;
-		margin: 0;
-		outline: 0;
-	}
-
+	padding: 0; 
+	 margin: 0; 
+	 outline: 0;}
 	html,
 	body {
 		height: 100%;
@@ -22,21 +18,30 @@
 		background-color: #EDF1F4;
 		font-size: 15px;
 	}
-
+	.link{
+		color: #1980D8;
+		cursor: pointer;
+	}
+	.cP{
+		cursor: pointer;
+	}.flex-center-v{
+		display: flex;
+		align-items: center;
+	}
 	/* COMMON STYLES */
-	.form-component {
+	.wf-form-component {
 		padding: 30px 40px;
 	}
-
-	.bgn-wf-parent {
+	.wf-parent {
 		padding: 30px 0;
-	}
-
-	.bgn-wf-wrapper * {
+		height: 100%;
+		box-sizing: border-box;
+		overflow: auto;
+		}
+	.wf-wrapper * {
 		box-sizing: border-box;
 	}
-
-	.bgn-wf-wrapper {
+	.wf-wrapper {
 		width: 100%;
 		max-width: 700px;
 		border-radius: 6px;
@@ -46,121 +51,46 @@
 		color: #222;
 		border: 1px solid #F0F5F8;
 	}
-
-	.bgn-wf-header {
+	.wf-header {
 		font-size: 22px;
 		padding-bottom: 30px;
 		font-weight: bold;
 	}
-
-
-	.bgn-wf-row {
+	.wf-row {
 		margin-bottom: 25px;
 	}
-
-	.bgn-wf-label {
+	.wf-row:last-child{
+		margin-bottom: 0;
+	}
+	.wf-label {
 		padding: 7px 0;
 	}
-
-	.form-component .bgn-wf-field-error,
-	.form-component .bgn-wf-field-help-text {
-		text-align: left;
-	}
-
-	.bgn-wf-field {
+	.wf-field {
 		text-align: left;
 		word-break: break-word;
 		border: 0;
 		position: relative;
 	}
-
-	.bgn-wf-field-inner {
+	.wf-field-inner {
 		position: relative;
 		display: flex;
 		flex: 1;
 	}
-
-	.bgn-wf-input-focus::after {
-		content: '';
-		width: calc(100%);
-		height: calc(100%);
-		top: 0;
-		border: 2px solid #30c384;
-		border-radius: 4px;
-		z-index: 1;
-		left: 0;
-		position: absolute;
-		pointer-events: none;
-		box-sizing: border-box;
-		opacity: 0;
-		transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+	.wf-field-input:focus {
+		border: 1px solid #30c384;
 	}
-
-	.bgn-wf-input-focus.bgn-wf-field::after {
+	.wf-input-focus.wf-field::after {
 		opacity: 1;
 	}
-
-	.bgn-wf-input-focus.bgn-wf-field::after,
-	.bgn-wf-field-error-active.bgn-wf-field .bgn-wf-field-error {
+	.wf-input-focus.wf-field::after,
+	.wf-field-error-active.wf-field .wf-field-error {
 		display: block;
 	}
-
-	.bgn-wf-field-error-active.bgn-wf-field .bgn-wf-field-input {
+	.wf-field-error-active.wf-field .wf-field-input {
 		border: 1px solid #FD6B6D;
 		box-shadow: 0 0 1px 1px #F4A2A2;
 	}
-
-	.bgn-wf-field-input,
-	.bgn-wf-field-dropdown {
-		width: 100%;
-		border: 1px solid #BDC8D3;
-		border-radius: 4px;
-		padding: 10px 15px;
-		min-height: 38px;
-		font-size: 15px;
-		font-family: inherit;
-	}
-
-	select:not([data-wform-field="select-multiple"]) {
-		-webkit-appearance: none;
-		background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 20%);
-		background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
-		background-size: 5px 5px, 5px 5px, 1px 1.5em;
-		background-repeat: no-repeat;
-		min-width: 70px;
-	}
-
-	.wf-field-item {
-		min-height: 38px;
-	}
-
-	.wf-time-field-wrapper {
-		display: flex;
-		flex: 1;
-	}
-
-	.wf-time-field-wrapper select {
-		margin-left: 10px;
-	}
-	.bgn-wf-field-error {
-		color: #FF5050;
-		font-size: 12px;
-		margin-top: 3px;
-		display: none;
-		animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
-		transform: translate3d(0, 0, 0);
-		backface-visibility: hidden;
-		perspective: 1000px;
-	}
-
-	.bgn-wf-field-help-text {
-		/* margin-top: 10px; */
-		color: #515159;
-		font-size: 12px;
-		margin-top: 3px;
-	}
-
-	.bgn-wf-field-mandatory .bgn-wf-field-inner::before {
+	.wf-field-mandatory .wf-field-inner::before {
 		content: '';
 		position: absolute;
 		left: 0px;
@@ -173,25 +103,139 @@
 		top: 0;
 		bottom: 0;
 	}
-
-	.bgn-wf-field-checkbox {
+	.wf-field-input,
+	.wf-field-dropdown {
+		width: 100%;
+		border: 1px solid #BDC8D3;
+		border-radius: 4px;
+		padding: 10px 15px;
+		min-height: 38px;
+		font-size: 15px;
+		font-family: inherit;
+	}
+	select:not([data-wform-field='select-multiple']) {
+		-webkit-appearance: none;
+		background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 20%);
+		background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+		background-size: 5px 5px, 5px 5px, 1px 1.5em;
+		background-repeat: no-repeat;
+		min-width: 70px;
+	}
+	.wf-field-item {
+		min-height: 38px;
+	}
+	.wf-time-field-wrapper {
+		display: flex;
+		flex: 1;
+	}
+	.wf-time-field-wrapper select {
+		margin-left: 10px;
+	}
+	.wf-form-component .wf-field-error,
+		.wf-form-component .wf-field-help-text {
+		text-align: left;
+	}
+	.wf-field-error {
+		color: #FF5050;
+		font-size: 12px;
+		margin-top: 4px;
+		display: none;
+		animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+	}
+	.wf-field-help-text {
+		color: #515159;
+		font-size: 12px;
+		margin-top: 5px;
+		}
+	.wf-field-help-text-link{
+		padding-left: 3px;
+		text-decoration: none;
+	}
+	.wf-field-checkbox {
 		cursor: pointer;
 		border-radius: 3px;
 		width: 14px;
 		height: 14px;
+		min-height: 20px;
 		box-sizing: initial;
+		accent-color: #31C486;
+		margin-right: 10px;
+		margin-bottom: auto;
+		transform: scale(1.2);
 	}
-
-	.bgn-wf-field-dropdown-date {
+	.wf-field-dropdown-date {
 		padding: 8px 12px;
 		border-radius: 4px;
 		font-size: 15px;
 		cursor: pointer;
-
 	}
-
-
-	.bgn-wf-btn {
+	.wf-field-dropdown-date {
+		border: 1px solid #BDC8D3;
+		}
+	.wf-field-dropdown-date:hover {
+		border: 1px solid #65C199;
+	}
+	.wform-field-item-upload-input {
+		min-height: 5rem;
+		background-color: #FBFCFD;
+		border: 1px dashed #bdc8d3;
+		line-height: 2.1;
+		cursor: pointer;
+	}
+	.wform-field-item-upload-input:focus {
+		border: 1px dashed #bdc8d3;
+	}
+	.wform-file-upload-input-label {
+		background-color: #fff;
+		background-image: linear-gradient(to top, #F5F8FA, #ffffff);
+		color: #212129;
+		border-color: #d3dbe3;
+		border: 1px solid #d3dbe3;border-radius: 4px;
+		padding: 0.7rem 2rem;
+		font-size: 1.4rem;
+		right: 1rem;
+		transform: translateY(-50%);
+		top: 50%;
+		position: absolute;
+		}
+	input[type='file']::file-selector-button {
+		display: none;
+	}
+	.wf-row[data-ux-field-appearance='captcha'] .wf-field{
+		display: flex;
+		align-items: center;
+	}
+	.wform-field-item-captcha-input{
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	.wf-field-captcha-img-wrap{
+		border: 1px solid #BDC8D3;
+		border-radius: 4px;
+		border-left: 0;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		height: 40px;
+		overflow: hidden;
+		min-width: 120px;
+	}
+	.wf-field-captcha-img{
+		height: 100%;
+		width: 100%;
+	}
+	.reload-img{
+		font-size: 23px;
+		color: #4B5569;
+		margin-right: 5px;
+	}
+	.reload-captcha{
+		margin-left: 10px;
+		user-select: none;
+	}
+	.wf-btn {
 		padding: 10px 20px;
 		border-radius: 4px;
 		font-size: 15px;
@@ -199,464 +243,478 @@
 		font-weight: bold;
 		font-family: inherit;
 	}
-
 	.wform-btn-wrap {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
 		flex: 1;
 	}
-
-	.bgn-wf-field-dropdown-date {
-		border: 1px solid #BDC8D3;
-	}
-
-	.bgn-wf-field-dropdown-date:hover {
-		border: 1px solid #65C199;
-	}
-
-	.form-component:not([data-ux-form-alignment="top"]) .bgn-wf-row {
+	/* ==================== *** Form Alignment *** ==================== */
+	.wf-form-component:not([data-ux-form-alignment='top']) .wf-row {
 		display: flex;
 	}
-
-	.form-component:not([data-ux-form-alignment="top"]) .bgn-wf-label {
+	.wf-form-component:not([data-ux-form-alignment='top']) .wf-label {
 		word-break: break-word;
 		width: 30%;
-		padding: 1rem 2rem 0;
+		padding: 1.2rem 2rem 0;
 	}
-
-	.form-component[data-ux-form-alignment="left"] .bgn-wf-label {
+	.wf-form-component[data-ux-form-alignment='left'] .wf-label {
 		text-align: left;
 		padding-left: 0;
 	}
-
-	.form-component[data-ux-form-alignment="right"] .bgn-wf-label {
+	.wf-form-component[data-ux-form-alignment='right'] .wf-label {
 		text-align: right;
 	}
-
-	.form-component[data-ux-form-alignment="center"] .bgn-wf-label {
+	.wf-form-component[data-ux-form-alignment='center'] .wf-label {
 		text-align: center;
 	}
-
-	.form-component:not([data-ux-form-alignment="top"]) .bgn-wf-field {
+	.wf-form-component:not([data-ux-form-alignment='top']) .wf-field {
 		width: 70%;
 	}
-
-	.form-component[data-ux-form-alignment="top"] .wform-btn-wrap {
+	.wf-form-component[data-ux-form-alignment='top'] .wform-btn-wrap {
 		justify-content: flex-start;
 	}
-	.wform-field-item-upload-input{
-		min-height: 5rem;
-    background-color: #FBFCFD;
-    border: 1px dashed #bdc8d3;
-    line-height: 2.1;
+	.wf-form-component[data-ux-form-alignment='top'] .wf-label[data-ux-empty-label='true']{
+		padding: 0;
 	}
-	.wform-file-upload-input-label {
-    background-color: #fff;
-    background-image: linear-gradient(to top, #F5F8FA, #ffffff);
-    color: #212129;
-    border-color: #d3dbe3;
-    border: 1px solid #d3dbe3;
-    border-radius: 4px;
-    padding: 0.7rem 2rem;
-    font-size: 1.4rem;
-    right: 1rem;
-    transform: translateY(-50%);
-    top: 50%;
-    position: absolute;
+	.wf-form-component[data-ux-form-alignment='top'] .reload-captcha{
+		text-align: right;
 	}
-	input[type="file"]::file-selector-button {
-	display: none;
-}
-
-
-
+	/* ==================== *** Form Alignment ends *** ==================== */
+	
+	/* ==================== *** css animations *** ==================== */
 	@keyframes shake {
-
-		10%,
-		90% {
-			transform: translate3d(-1px, 0, 0);
-		}
-
-		20%,
-		80% {
-			transform: translate3d(2px, 0, 0);
-		}
-
-		30%,
-		50%,
-		70% {
-			transform: translate3d(-4px, 0, 0);
-		}
-
-		40%,
-		60% {
-			transform: translate3d(4px, 0, 0);
-		}
+		10%,90% {transform: translate3d(-1px, 0, 0);}
+		20%,80% {transform: translate3d(2px, 0, 0);}
+		30%,50%,70% {transform: translate3d(-4px, 0, 0);}
+		40%,60% {transform: translate3d(4px, 0, 0);}
 	}
-
-
-
-
-
-
-
-
-
-
-
-	@media screen and (max-width: 1025px) {
-		.bgn-wf-wrapper {
-			max-width: 68% !Important;
-			border: 0;
-		}
-
-		.bgn-wf-row,
-		.bgn-wf-label,
-		.bgn-wf-field {
-			display: block;
-			width: 100%;
-		}
-
-		.bgn-wf-field input[type=text],
-		.bgn-wf-field select,
-		.bgn-wf-field textarea {
+	/* ==================== *** css animations ends *** ==================== */
+	
+	/* ==================== *** Mediaquery *** ==================== */
+	@media screen and (max-width: 1024px) {
+		.wf-wrapper {
+		max-width: 68% !Important;
+		border: 0;
+	}
+		.wf-field input[type=text],
+		.wf-field select,
+		.wf-field textarea {
 			width: 100% !important;
 		}
-
-		.bgn-wf-field div>select {
-			width: auto !important;
-		}
-
-		.bgn-wf-label:empty {
+	.wf-label:empty {
 			display: none;
 		}
+	}@media screen and (max-width: 768px) {
+		.wf-wrapper {
+		max-width: 68% !Important;
+		border: 0;
 	}
-
-	@media screen and (max-width: 769px) {
-		.bgn-wf-wrapper {
-			max-width: 68% !Important;
-			border: 0;
+	.wf-field input[type=text],
+		.wf-field select,
+		.wf-field textarea {
+		width: 100% !important;
 		}
-
-		.bgn-wf-row,
-		.bgn-wf-label,
-		.bgn-wf-field {
-			display: block;
-			width: 100%;
-		}
-
-		.bgn-wf-field input[type=text],
-		.bgn-wf-field select,
-		.bgn-wf-field textarea {
-			width: 100% !important;
-		}
-
-		.bgn-wf-field div>select {
-			width: auto !important;
-		}
-
-		.bgn-wf-label:empty {
-			display: none;
+	.wf-label:empty {
+		display: none;
 		}
 	}
-
 	@media screen and (max-width: 590px) {
-		.bgn-wf-parent {
-			padding: 20px 0;
-		}
-
-		.bgn-wf-wrapper {
-			max-width: calc(100% - 40px) !Important;
-			border: 0;
-		}
-
-		.form-component {
-			padding: 20px;
-		}
-
-		.bgn-wf-row,
-		.bgn-wf-label,
-		.bgn-wf-field {
-			display: block;
-			width: 100%;
-		}
-
-		.bgn-wf-field input[type=text],
-		.bgn-wf-field select,
-		.bgn-wf-field textarea {
-			width: 100% !important;
-		}
-
-		.bgn-wf-field div>select {
-			width: auto !important;
-		}
-
-		.bgn-wf-label:empty {
-			display: none;
-		}
+	.wf-parent {
+		padding: 20px 0;
 	}
-</style>
-
-<body>
-	<div class="bgn-wf-parent" style="background-color: #846AE8">
-		<div class='bgn-wf-wrapper' id='BiginWebToEntityFormDiv1799275000000452101'>
-			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-			<META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
-			<div id='BiginWebToContactForm1799275000000452101' name='BiginWebToContactForm1799275000000452101'
-				method='POST' enctype='multipart/form-data'
-				onSubmit='javascript:document.charset="UTF-8"; return validateForm1799275000000452101()'
-				accept-charset='UTF-8' class="form-component" data-ux-form-alignment="top"
-				style="font-family: sans-serif;">
-				<!-- Do not remove this code. -->
-				<input type='text' style='display:none;' name='xnQsjsdp'
-					value='5db23d4694378fab2ec7c42653fd305069b0ab3fe60a45019748d64ddef08f07' />
-				<input type='hidden' name='zc_gad' id='zc_gad' value='' />
-				<input type='text' style='display:none;' name='xmIwtLD'
-					value='a29316bebd9881449c1d6acf40980b9ae6fdf1d80d714ae21f4576ae436e8b54' />
-				<input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM=' />
-				<input type='text' style='display:none;' name='returnURL' value='https://zoho.com' />
-				<div class="bgn-wf-header">name12</div>
-				<div id="elementDiv1799275000000452101" class="form-wrapper">
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">Last Name</div>
-						<div class="bgn-wf-field bgn-wf-field-mandatory bgn-wf-field-error-active">
-							<div class="bgn-wf-field-inner">
-								<input name="Last Name" type="text" maxlength="80" value="" placeholder=""
-									class="wf-field-item bgn-wf-field-input" />
-							</div>
-							<span class="bgn-wf-field-error">Last Name cannot be empty</span>
+	.wf-wrapper {
+		max-width: calc(100% - 40px) !Important;
+		border: 0;
+	}
+	.wf-form-component {
+		padding: 20px;
+	}
+	.wf-field input[type=text],
+	.wf-field select,
+	.wf-field textarea {
+		width: 100% !important;
+	}
+	.wf-label:empty {
+		display: none;
+	}
+	.wf-row[data-ux-field-appearance='date-time'] .wf-field-inner{
+		flex-direction: column;
+	}
+	.wf-row[data-ux-field-appearance='date-time'] .wf-time-field-wrapper{
+		margin-top: 10px;
+	}
+	.wf-row[data-ux-field-appearance='date-time'] .wf-field-item:first-child{
+		margin-left: 0;
+	}
+	.wf-row[data-ux-field-appearance='date-time'] .wf-field-item{
+		flex: 1;
+	}
+	.wf-row[data-ux-field-appearance='captcha'] .wf-field{
+		flex-direction: column;
+	}
+	.wf-row[data-ux-field-appearance='captcha'] .reload-captcha{
+		margin-left: auto;
+	}
+	.wf-row[data-ux-field-appearance='captcha'] .wf-field-inner{
+		width: 100%;
+	}
+	}
+	/* ==================== *** Mediaquery ends *** ==================== */
+	</style>
+	<div class='wf-parent' style='background-color: #E4E6C5'>
+		<div class='wf-wrapper' id='BiginWebToRecordFormDiv111111000000255001'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
+		<form id='BiginWebToRecordForm111111000000255001' name='BiginWebToRecordForm111111000000255001' class='wf-form-component' data-ux-form-alignment='top' style='font-family: Verdana;font-size:16;' method='POST' enctype='multipart/form-data' onSubmit='javascript:document.charset="UTF-8"; return validateForm111111000000255001()' accept-charset='UTF-8'>
+	<!-- Do not remove this code. -->
+		 <input type='text' style='display:none;' name='xnQsjsdp' value='2f882202694cfbe77b75613ed117fab1cb7367186243ddcec1d43be234188e89'/>
+		 <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
+		 <input type='text' style='display:none;' name='xmIwtLD' value='01555428093e5113da974885f3c0b8562dd7e9d65f3d310537c5bc807f9ca421'/>
+		 <input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='/>
+		 <input type='text' style='display:none;' name='returnURL' value='null' />
+		 <div class='wf-header'>allfields</div>
+		 <div id='elementDiv111111000000255001' class='wf-form-wrapper'>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>Last Name</div>
+				   <div class='wf-field wf-field-mandatory'>
+						<div class='wf-field-inner'>
+						<input name='Last Name' maxlength='80' type='text' value='' class='wf-field-item wf-field-input'/>
 						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">Title
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>Email</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<input name='Email' maxlength='100' type='text' value='' class='wf-field-item wf-field-input'/>
 						</div>
-						<div class="bgn-wf-field">
-							<input name="Title" type="text" maxlength="100" value="" placeholder=""
-								class="wf-field-item bgn-wf-field-input" />
-							<!-- <a style="margin: 10px 0 0 10px;" href="https://zoho.com" target="_blank">with help link</a> -->
+						<div class='wf-field-help-text'>test messagekqsfsd jdddnfjk dfb fd  <a href='https://djnj.com' target='_blank' class='wf-field-help-text-link'>https://djnj.com</a> dfvdfvfd
 						</div>
-					</div>
-
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">file upload
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>Email Opt Out</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<input name='Email Opt Out' type='checkbox' class='wf-field-item wf-field-checkbox'/>
 						</div>
-						<div class="bgn-wf-field">
-							<label for="wform-file-upload-input" class="wform-file-upload-input-label">Browse</label>
-							<input name="file upload" type="file" class="wf-field-item bgn-wf-field-input wform-field-item-upload-input" />
-							<!-- <a style="margin: 10px 0 0 10px;" href="https://zoho.com" target="_blank">with help link</a> -->
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>Description</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<textarea name='Description' maxlength='32000' type='text' value='' class='wf-field-item wf-field-input' style='resize: none;'></textarea>
 						</div>
-					</div>
-
-
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">Mobile
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>PicklistCF1</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<select name='PicklistCF1' class='wf-field-item wf-field-dropdown' data-wform-field='select'>
+							 <option value='-None-'>-None-</option>
+							 <option value='option123'>option123</option>
+							 <option value='option312312'>option312312</option>
+							 <option value='option412341'>option412341</option>
+							 <option value='option98933'>option98933</option>
+							 <option value='option591203'>option591203</option>
+						</select>
 						</div>
-						<div class="bgn-wf-field bgn-wf-field-mandatory bgn-wf-field-error-active">
-							<div class="bgn-wf-field-inner">
-								<input name="Mobile" type="text" maxlength="30" value="" placeholder=""
-									class="wf-field-item bgn-wf-field-input" />
-							</div>
-							<div class="bgn-wf-field-error">Mobile cannot be empty</div>
-							<div class="bgn-wf-field-help-text">Please enter a personal mobile number.</div>
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'></div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner flex-center-v'>
+							 <input class='wf-field-item wf-field-checkbox' type='checkbox' id='privacycheck' name='privacyTool' autocomplete='off' onclick='disableSubmit()'/>
+							 <label for='privacycheck' class='cP'><div dir='ltr'>I agree to the Privacy Policy and Terms of Service.n. kjbkjbkj kj jk kj jk. kj nkm kj jkjk jk jjk jknjk knjknjknjknkjnkj</div></label>
 						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">Mailing City</div>
-						<div class="bgn-wf-field bgn-wf-field-mandatory">
-							<input name="Mailing City" type="text" maxlength="100" value="" placeholder=""
-								class="wf-field-item bgn-wf-field-input" />
+				   </div>
+			  </div>
+			  <div class='wf-row' data-ux-field-appearance='captcha'>  
+				   <div class='wf-label'>Captcha</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+							 <input type='text' name='enterdigest' class='wf-field-item wf-field-input wform-field-item-captcha-input'/>
+							 <div class='wf-field-captcha-img-wrap'><img id='imgid' alt='captcha image' class='wf-field-captcha-img' src='https://ponmala-0015.csez.zohocorpin.com:9999/crm/CaptchaServlet?formId=01555428093e5113da974885f3c0b8562dd7e9d65f3d310537c5bc807f9ca421&grpid=2f882202694cfbe77b75613ed117fab1cb7367186243ddcec1d43be234188e89'/>
+							 </div>
 						</div>
-					</div>
-					<div class="bgn-wf-row" style="display:none;">
-						<div class="bgn-wf-label">Home Phone
+						<div class='cP reload-captcha' onclick='reloadImg()'>
+							 <span class='reload-img'>&#8635</span><span class='link'>Reload</span>
 						</div>
-						<div class="bgn-wf-field">
-							<input name="Home Phone" type="text" maxlength="30" value="phone123123"
-								placeholder="" class="wf-field-item bgn-wf-field-input" />
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>File upload</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+							 <label for='theFile' class='wform-file-upload-input-label cP'>Browse</label>
+							 <input type='file' name='theFile' id='theFile' class='wf-field-item wf-field-input wform-field-item-upload-input' multiple/>
 						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfCheckbox
+						<div class='wf-field-help-text'>File(s) size limit is 20MB.</div>
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>datecf1</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<input type='date' name='datecf1' maxlength='20' value='' placeholder='MM/dd/yyyy' class='wf-field-item wf-field-input'>
 						</div>
-						<div class="bgn-wf-field">
-							<input name="CONTACTCF101" type="checkbox" placeholder=""
-								class="wf-field-item bgn-wf-field-checkbox" />
+				   </div>
+			  </div>
+			  <div class='wf-row' data-ux-field-appearance="date-time"">  
+				   <div class='wf-label'>datetimecf1</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<input type='date' name='datetimecf1' maxlength='120' value='' placeholder='MM/dd/yyyy' class='wf-field-item wf-field-input'>
+						<div class='wf-time-field-wrapper'> 
+						<select name='datetimecf1hour' class='wf-field-item wf-field-dropdown-date' data-wform-field='select'>
+							 <option value='01'>01</option>
+							 <option value='02'>02</option>
+							 <option value='03'>03</option>
+							 <option value='04'>04</option>
+							 <option value='05'>05</option>
+							 <option value='06'>06</option>
+							 <option value='07'>07</option>
+							 <option value='08'>08</option>
+							 <option value='09'>09</option>
+							 <option value='10'>10</option>
+							 <option value='11'>11</option>
+							 <option value='12'>12</option>
+						</select>
+						<select name='datetimecf1minute' class='wf-field-item wf-field-dropdown-date' data-wform-field='select'>
+							 <option value='00'>00</option>
+							 <option value='01'>01</option>
+							 <option value='02'>02</option>
+							 <option value='03'>03</option>
+							 <option value='04'>04</option>
+							 <option value='05'>05</option>
+							 <option value='06'>06</option>
+							 <option value='07'>07</option>
+							 <option value='08'>08</option>
+							 <option value='09'>09</option>
+							 <option value='10'>10</option>
+							 <option value='11'>11</option>
+							 <option value='12'>12</option>
+							 <option value='13'>13</option>
+							 <option value='14'>14</option>
+							 <option value='15'>15</option>
+							 <option value='16'>16</option>
+							 <option value='17'>17</option>
+							 <option value='18'>18</option>
+							 <option value='19'>19</option>
+							 <option value='20'>20</option>
+							 <option value='21'>21</option>
+							 <option value='22'>22</option>
+							 <option value='23'>23</option>
+							 <option value='24'>24</option>
+							 <option value='25'>25</option>
+							 <option value='26'>26</option>
+							 <option value='27'>27</option>
+							 <option value='28'>28</option>
+							 <option value='29'>29</option>
+							 <option value='30'>30</option>
+							 <option value='31'>31</option>
+							 <option value='32'>32</option>
+							 <option value='33'>33</option>
+							 <option value='34'>34</option>
+							 <option value='35'>35</option>
+							 <option value='36'>36</option>
+							 <option value='37'>37</option>
+							 <option value='38'>38</option>
+							 <option value='39'>39</option>
+							 <option value='40'>40</option>
+							 <option value='41'>41</option>
+							 <option value='42'>42</option>
+							 <option value='43'>43</option>
+							 <option value='44'>44</option>
+							 <option value='45'>45</option>
+							 <option value='46'>46</option>
+							 <option value='47'>47</option>
+							 <option value='48'>48</option>
+							 <option value='49'>49</option>
+							 <option value='50'>50</option>
+							 <option value='51'>51</option>
+							 <option value='52'>52</option>
+							 <option value='53'>53</option>
+							 <option value='54'>54</option>
+							 <option value='55'>55</option>
+							 <option value='56'>56</option>
+							 <option value='57'>57</option>
+							 <option value='58'>58</option>
+							 <option value='59'>59</option>
+						</select>
+						<select name='datetimecf1ampm' class='wf-field-item wf-field-dropdown-date' data-wform-field='select'>
+							 <option value='AM'>AM</option>
+							 <option value='PM'>PM</option>
+						</select>
 						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfPicklist1
 						</div>
-						<div class="bgn-wf-field">
-							<select name="CONTACTCF1" class="wf-field-item bgn-wf-field-dropdown"
-								data-wform-field="select">
-								<option value="-None-">-None-</option>
-								<option value="123">123</option>
-								<option value="23324">23324</option>
-								<option value="3r4343">3r4343</option>
-								<option value="234343223g">234343223g</option>
-							</select>
+				   </div>
+			  </div>
+			  <div class='wf-row'>  
+				   <div class='wf-label'>multipickcf1</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<select multiple name='multipickcf1' class='wf-field-item wf-field-dropdown' data-wform-field='select-multiple'>
+							 <option value='dfvkfdn'>dfvkfdn</option>
+							 <option value='dfvkjn23423dfvfd'>dfvkjn23423dfvfd</option>
+							 <option value='324234'>324234</option>
+							 <option value='bgbgof&#x20;jgf&#x20;gf&#x20;g'>bgbgof jgf gf g</option>
+							 <option value='lgfn&#x20;jfn&#x20;fg&#x20;gf'>lgfn jfn fg gf</option>
+						</select>
 						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfMultipick
+				   </div>
+			  </div>
+			  <div class='wf-row' style='display:none;';>  
+				   <div class='wf-label'>First Name</div>
+				   <div class='wf-field'>
+						<div class='wf-field-inner'>
+						<input name='First Name' maxlength='40' type='text' value='jbbj132' class='wf-field-item wf-field-input'/>
 						</div>
-						<div class="bgn-wf-field">
-							<select multiple name="CONTACTCF2" class="wf-field-item bgn-wf-field-dropdown"
-								data-wform-field="select-multiple">
-								<option value="23423">23423</option>
-								<option value="fbgfb fg">fbgfb fg</option>
-								<option value="ijnknr gf fg">ijnknr gf fg</option>
-								<option value="jf jh23432">jf jh23432</option>
-								<option value="23h4h234bkj32n4">23h4h234bkj32n4</option>
-							</select>
-						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfDatetime123
-						</div>
-						<div class="bgn-wf-field">
-							<div class="bgn-wf-field-inner">
-								<input type="date" name="CONTACTCF116" maxlength="120" value=""
-									placeholder="MM/DD/YYYY" class="wf-field-item bgn-wf-field-input">
-								<div class="wf-time-field-wrapper">
-									<select name="CONTACTCF116hour"
-										class="wf-field-item bgn-wf-field-dropdown-date"
-										data-wform-field="select">
-										<option value="00">00</option>
-										<option value="01">01</option>
-										<option value="02">02</option>
-									</select>
-									<select name="CONTACTCF116minute"
-										class="wf-field-item bgn-wf-field-dropdown-date"
-										data-wform-field="select">
-										<option value="00">00</option>
-										<option value="01">01</option>
-										<option value="02">02</option>
-									</select>
-									<select name="CONTACTCF116ampm"
-										class="wf-field-item bgn-wf-field-dropdown-date"
-										data-wform-field="select">
-										<option value="AM">AM</option>
-										<option value="PM">PM</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfPhone
-						</div>
-						<div class="bgn-wf-field">
-							<input name="CONTACTCF4" type="text" maxlength="20" value="" placeholder=""
-								class="wf-field-item bgn-wf-field-input" />
-						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfText
-						</div>
-						<div class="bgn-wf-field">
-							<input name="CONTACTCF5" type="text" maxlength="255" value="" placeholder=""
-								class="wf-field-item bgn-wf-field-input" />
-						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfemail1
-						</div>
-						<div class="bgn-wf-field">
-							<input name="CONTACTCF3" type="text" maxlength="100" value="" placeholder=""
-								class="wf-field-item bgn-wf-field-input" />
-						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfMultilinw12
-						</div>
-						<div class="bgn-wf-field">
-							<textarea name="CONTACTCF6" maxlength="2000" placeholder=""
-								class="wf-field-item bgn-wf-field-input" style="resize: none;"></textarea>
-						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfDate1
-						</div>
-						<div class="bgn-wf-field">
-							<input type="date" name="CONTACTCF81" maxlength="20" value=""
-								placeholder="MM/DD/YYYY" class="wf-field-item bgn-wf-field-input" />
-						</div>
-					</div>
-					<div class="bgn-wf-row">
-						<div class="bgn-wf-label">cfLongnum
-						</div>
-						<div class="bgn-wf-field">
-							<input name="CONTACTCF117" type="text" maxlength="18" value="" placeholder=""
-								class="wf-field-item bgn-wf-field-input" />
-						</div>
-					</div>
-					<div class="bgn-wf-row bgn-wf-btn-row">
-						<div class="bgn-wf-label"></div>
-						<div class="wform-btn-wrap">
-							<button type="button" class="bgn-wf-btn"
-								style="margin-right: 5px; border: solid 1px #d3dbe3; color: #222;background: #fff;">Reset</button>
-							<button type="button" class="bgn-wf-btn"
-								style="background-color: #1980D8; color: #fff; border: 1px solid #1980D8;">Submit</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			</form>
+				   </div>
+			  </div>
+			  <div class='wf-row wf-btn-row'>
+				   <div class='wf-label' data-ux-empty-label='true'></div>
+				   <div class='wform-btn-wrap'>
+				   <button id='formsubmit' type='button' class='wf-btn' style='background-color:#1980d8; color: #fff; border: 1px solid #1980d8;'>Submit</button>
+			  </div></div>
+		</div>
+		</form>
 		</div>
 	</div>
-</body>
-
-<script>
-
-	function disableSubmitwhileReset1799275000000452101() {
-		var submitbutton = document.getElementById('formsubmit1799275000000452101');
-		if (document.getElementById('privacyTool1799275000000452101') !== null || document.getElementById('consentTool') !== null) {
-			submitbutton.disabled = true;
-			submitbutton.style.opacity = '0.5;';
-		} else {
+		<script>
+		   var mndFileds=new Array('Last\x20Name');
+		   var fldLangVal=new Array('Last\x20Name');
+			var name='';
+			var email=''; 
+	  
+	function disableSubmitwhileReset()
+		{		
+		var submitbutton = document.getElementById('formsubmit');
+		if(document.getElementById('privacyTool')!=undefined || document.getElementById('consentTool')!=undefined)
+		{
+			submitbutton.setAttribute('disabled', true);
+		submitbutton.setAttribute('style','opacity:0.5;');
+	 }
+		else
+		{
 			submitbutton.removeAttribute('disabled');
 		}
+	} 
+	function disableSubmit()
+		{		
+		var isprivacyToolAvail = false;
+		var isconsentToolAvail = false;
+		var bothtoolAvail = false;
+		var privacytool='';
+		var consenttool='';
+		var submitbutton = document.getElementById('formsubmit');
+		if(document.getElementById('privacyTool')!=undefined && document.getElementById('consentTool')!=undefined)
+		{
+				isprivacyToolAvail=true;
+				privacytool = document.getElementById('privacyTool');
+				isconsentToolAvail=true;
+				consenttool=document.getElementById('consentTool');
+				bothtoolAvail=true;
+		}
+	
+		if(document.getElementById('privacyTool')!=undefined)
+		{
+				isprivacyToolAvail=true;
+				privacytool = document.getElementById('privacyTool');
+		}
+		if(document.getElementById('consentTool')!=undefined)
+		{
+				isconsentToolAvail=true;
+				consenttool=document.getElementById('consentTool');
+		}
+		if(submitbutton.hasAttribute('disabled') && bothtoolAvail && consenttool.checked && privacytool.checked)
+		{
+				submitbutton.removeAttribute('disabled');
+		submitbutton.removeAttribute('style','opacity: none;');
+	}	else if(submitbutton.hasAttribute('disabled') && isprivacyToolAvail && privacytool.checked && consenttool=='')
+		{
+				submitbutton.removeAttribute('disabled');
+		 submitbutton.style.opacity = 1;	
+	}	else if(submitbutton.hasAttribute('disabled') && isconsentToolAvail && consenttool.checked && privacytool=='')
+		{
+				submitbutton.removeAttribute('disabled');
+	submitbutton.removeAttribute('style','opacity: none;');
+		}
+		else
+		{
+				submitbutton.disabled = true;
+		submitbutton.style.opacity = 0.5;}
 	}
-	function checkMandatory1799275000000452101() {
-		var mndFields = new Array('Last Name', 'Mailing City');
-		var fldLangVal = new Array('Last Name', 'Mailing City');
-		var i;
-		var mndFieldslength = mndFields.length;
-		var fieldObj;
-		for (i = 0; i < mndFieldslength; i++) {
-			fieldObj = document.forms.BiginWebToContactForm1799275000000452101[mndFields[i]];
-			if (fieldObj) {
-				if (fieldObj.value.replace(/^s+|s+$/g, '').length === 0) {
-					if (fieldObj.type === 'file') {
-						alert('Please select a file to upload.');
-						fieldObj.focus();
-						return false;
-					}
-					alert(fldLangVal[i] + ' cannot be empty.');
+	
+	  /* Do not remove this code. */
+		   function reloadImg() {
+			if(document.getElementById('imgid').src.indexOf('&d') !== -1 ) {
+				  document.getElementById('imgid').src=document.getElementById('imgid').src.substring(0,document.getElementById('imgid').src.indexOf('&d'))+'&d'+new Date().getTime();
+			}  else {
+				  document.getElementById('imgid').src = document.getElementById('imgid').src+'&d'+new Date().getTime();
+			 } 
+		  }
+	
+		   function checkMandatory111111000000255001() {
+			for(i=0;i<mndFileds.length;i++) {
+			  var fieldObj=document.forms['BiginWebToRecordForm111111000000255001'][mndFileds[i]];
+			  if(fieldObj) {
+				if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+				 if(fieldObj.type =='file')
+					{ 
+					 alert('Please select a file to upload.'); 
+					 fieldObj.focus(); 
+					 return false;
+					} 
+				alert(fldLangVal[i] +' cannot be empty'); 
+						  fieldObj.focus();
+						  return false;
+				}  else if(fieldObj.nodeName=='SELECT') {
+						 if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
+					alert(fldLangVal[i] +' cannot be none'); 
 					fieldObj.focus();
 					return false;
-				} else if (fieldObj.nodeName === 'SELECT') {
-					if (fieldObj.options[fieldObj.selectedIndex].value === '-None-') {
-						alert(fldLangVal[i] + ' cannot be none.');
-						fieldObj.focus();
-						return false;
-					}
-				} else if (fieldObj.type === 'checkbox') {
-					if (fieldObj.checked === false) {
-						alert('Please accept  ' + fldLangVal[i]);
-						fieldObj.focus();
-						return false;
-					}
-				}
-				if (fieldObj.name === 'Last Name' && fieldObj.value) {
+				   }
+				} else if(fieldObj.type =='checkbox'){
+					if(fieldObj.checked == false){
+					alert('Please accept  '+fldLangVal[i]);
+					fieldObj.focus();
+					return false;
+				   } 
+				 } 
+				 try {
+					 if(fieldObj.name == 'Last Name') {
 					name = fieldObj.value;
+					   }
+				} catch (e) {}
 				}
 			}
-		}
-		return true;
-	}
-	function validateFileUpload() { var e = document.getElementById("theFile"), t = 0; if (e) { if (e.files.length > 3) return alert("You can upload a maximum of three files at a time."), !1; if ("files" in e) { var i = e.files.length; if (0 !== i) { for (var o = 0; o < i; o++) { var a = e.files[o]; "size" in a && (t += a.size) } if (t > 20971520) return alert("Total file(s) size should not exceed 20MB."), !1 } } } return !0 }</script>
-<script id='wf_script'
-	src='https://bigin.localzoho.com/crm/WebformScriptServlet?rid=a29316bebd9881449c1d6acf40980b9ae6fdf1d80d714ae21f4576ae436e8b54gid5db23d4694378fab2ec7c42653fd305069b0ab3fe60a45019748d64ddef08f07'></script>
+			 return validateFileUpload(); }
+	function validateFileUpload(){
+			 var uploadedFiles = document.getElementById('theFile'); 
+			 var totalFileSize =0; 
+			 if(uploadedFiles.files.length >3){ 
+				 alert('You can upload a maximum of three files at a time.'); 
+				 return false; 
+			 } 
+			 if ('files' in uploadedFiles) { 
+				 if (uploadedFiles.files.length != 0) { 
+					 for (var i = 0; i < uploadedFiles.files.length; i++) { 
+						 var file = uploadedFiles.files[i]; 
+						 if ('size' in file) { 
+							 totalFileSize = totalFileSize + file.size; 
+						 } 
+					 } 
+					 if(totalFileSize > 20971520){ 
+						 alert('Total file(s) size should not exceed 20MB.'); 
+						 return false; 
+					 } 
+				 } 
+			 } 
+		 }
+	</script>
+		  <script id='wf_script' src='https://ponmala-0015.csez.zohocorpin.com:9999/crm/WebformScriptServlet?rid=01555428093e5113da974885f3c0b8562dd7e9d65f3d310537c5bc807f9ca421gid2f882202694cfbe77b75613ed117fab1cb7367186243ddcec1d43be234188e89'></script>
