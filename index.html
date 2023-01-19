@@ -160,15 +160,13 @@
 	.wf-field-checkbox {
 		cursor: pointer;
 		border-radius: 3px;
-		width: 14px;
-		height: 14px;
+		min-width: 14px;
+		min-height: 14px;
 		min-height: 20px;
 		box-sizing: initial;
 		accent-color: #31C486;
 		margin-right: 10px;
 		margin-bottom: auto;
-		-webkit-transform: scale(1.2);
-		transform: scale(1.2);
 	}
 	.wf-field-dropdown-date {
 		padding: 8px 12px;
@@ -474,7 +472,7 @@
 				   <div class='wf-label'>datecf1</div>
 				   <div class='wf-field'>
 						<div class='wf-field-inner'>
-						<input type='date' name='datecf1' maxlength='20' value='' placeholder='MM/dd/yyyy' class='wf-field-item wf-field-input'>
+						<input type='date' name='datecf1' maxlength='20' value='' placeholder='MM/dd/yyyy' class='wf-field-item wf-field-input wf-field-item-date'>
 						</div>
 				   </div>
 			  </div>
@@ -482,7 +480,7 @@
 				   <div class='wf-label'>datetimecf1</div>
 				   <div class='wf-field'>
 						<div class='wf-field-inner'>
-						<input type='date' name='datetimecf1' maxlength='120' value='' placeholder='MM/dd/yyyy' class='wf-field-item wf-field-input'>
+						<input type='date' name='datetimecf1' maxlength='120' value='' placeholder='MM/dd/yyyy' class='wf-field-item wf-field-input wf-field-item-date'>
 						<div class='wf-time-field-wrapper'> 
 						<select name='datetimecf1hour' class='wf-field-item wf-field-dropdown-date' data-wform-field='select'>
 							 <option value='01'>01</option>
