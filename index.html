@@ -18,6 +18,12 @@
 		background-color: #EDF1F4;
 		font-size: 15px;
 	}
+	ul,ol{
+		list-style-position: inside;
+	}
+	textarea, input[type="text"], input[type="button"], input[type="submit"], input[type="date"] {
+     -webkit-appearance: none;
+	}
 	.link{
 		color: #1980D8;
 		cursor: pointer;
@@ -244,7 +250,6 @@
 		cursor: pointer;
 		font-weight: bold;
 		font-family: inherit;
-		-webkit-appearance: none;
 	}
 	.wform-btn-wrap {
 		display: flex;
@@ -593,7 +598,7 @@
 			  <div class='wf-row wf-btn-row'>
 				   <div class='wf-label' data-ux-empty-label='true'></div>
 				   <div class='wform-btn-wrap'>
-				   <input id='formsubmit' type='submit' class='wf-btn' style='background-color:#1980d8; color: #fff; border: 1px solid #1980d8;' value='Submit' />
+				   <input id='formsubmit' type='submit' class='wf-btn' style='background-color:#1980d8; color: #fff; border: 1px solid #1980d8;' value="Submit" />
 			  </div></div>
 		</div>
 		</form>
