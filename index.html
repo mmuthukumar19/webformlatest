@@ -1,6 +1,1177 @@
-<style>
-	
-</style>
-<form>
-	<input type="submit" value="submit">
-</form>
+<style type='text/css'>
+    /* COMMON STYLES */
+    :root,
+      html {
+      font-size: 10px; 
+    }
+    * {
+    padding: 0; 
+     margin: 0; 
+     outline: 0;}
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #EDF1F4;
+      font-size: 15px;
+    }
+    ul,
+    ol {
+      list-style-position: inside;
+    }
+    textarea,
+    input[type='text'],
+    input[type='button'],
+    input[type='submit'],
+    input[type='date'] {
+      -webkit-appearance: none;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+      outline: none;
+    }.link{
+      color: #1980D8;
+      cursor: pointer;
+    }
+    .cP{
+      cursor: pointer;
+    }.flex-center-v{
+      display: flex;
+      align-items: center;
+    }
+    /* COMMON STYLES */
+    .wf-form-component {
+      padding: 30px 40px 60px;
+    }
+    .wf-form-paid {
+      padding-bottom: 45px;
+    }
+    .wf-parent {
+      padding: 30px 0;
+      height: 100%;
+      box-sizing: border-box;
+      overflow: auto;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;}
+    .wf-wrapper * {
+      box-sizing: border-box;
+    }
+    .wf-wrapper {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      margin: auto;
+      border: none;
+      background-color: #fff;
+      color: #222;
+      box-shadow: 0px 0px 2px 0 #00000033;
+    }
+    .iframe-container{
+      height: 100%;
+      width: 100%;
+      border: none;
+      min-height: 365px;
+    }
+    .wf-logo {
+      display: flex;
+      margin-bottom: 30px;
+      max-height: 60px;
+      justify-content: center;
+    }
+    .wf-logo[data-ux-logo-size='lg'] {
+      height: 60px;
+    }
+    .wf-logo[data-ux-logo-size='md'] {
+      height: 50px;
+    }
+    .wf-logo[data-ux-logo-size='sm'] {
+      height: 30px;
+    }
+    .wf-logo[data-ux-logo-pos='left'] {
+      justify-content: left;
+    }
+    .wf-logo[data-ux-logo-pos='center'] {
+      justify-content: center;
+    }
+    .wf-logo[data-ux-logo-pos='right'] {
+      justify-content: right;
+    }
+    .wf-header {
+      font-size: 22px;
+      padding-bottom: 35px;
+      font-weight: bold;
+      word-break: break-word;
+    }
+    .wf-sec-wrap{
+      margin-bottom: 40px;
+    }
+    .wf-sec-wrap:first-child .wf-sec-head{
+      margin-top: 0;
+    }
+    .wf-sec-head {
+      margin-bottom: 20px;
+      margin-top: 35px;
+    }
+    .wf-sec-title {
+      font-size: 18px;
+      font-weight: bold;
+      word-break: break-word;
+    }
+    .wf-sec-desc {
+      margin: 0;
+      margin-top: 5px;
+      word-break: break-word;
+    }
+    .wf-row {
+      margin-bottom: 20px;
+    }
+    .wf-row-with-supplementary{
+      margin-bottom: 10px;
+    }
+    .wf-label {
+      padding: 7px 0;
+      word-break: break-word;
+    }
+    .wf-field {
+      text-align: left;
+      word-break: break-word;
+      border: 0;
+      position: relative;
+    }
+    .wf-field-inner {
+      position: relative;
+      display: flex;
+      flex: 1;
+    }
+    .wf-field-input:focus {
+      border: 1px solid #1980d8;
+    }
+    .wf-field-dropdown .wf-field-input:focus{
+      border: none;  /* multipicklist search */
+    }.wf-input-focus.wf-field::after {
+      opacity: 1;
+    }
+    .wf-input-focus.wf-field::after,
+    .wf-field-error-active.wf-field .wf-field-error {
+      display: block;
+    }
+    .wf-field-error-active.wf-field .wf-field-input,.wf-field-error-active.wf-field .wf-field-dropdown {
+      border: 1px solid #FD6B6D;
+      box-shadow: 0 0 1px 1px #F4A2A2;
+    }
+    .wf-field-mandatory .wf-field-inner::before {
+      content: '';
+      position: absolute;
+      left: 0px;
+      background-color: #ff6a6a;
+      width: 3px;
+      height: 100%;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+    }
+    .wf-field-mandatory .wf-field-inner.no-results-elem::before{ 
+      height: 98%;
+    }
+    .wf-field-input,
+    .wf-field-dropdown {
+      width: 100%;
+      border: 1px solid #BDC8D3;
+      border-radius: 4px;
+      padding: 10px 15px;
+      min-height: 38px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+    select:not([data-wform-field='select-multiple']) {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+      background-image: url(\"data:image/svg+xml;utf8,<svg fill='black' height='34' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>\");
+      background-repeat: no-repeat;
+      background-position-x: 99%;
+      background-color: #fff;
+      min-width: 70px;
+    }
+    input,
+    select {
+      background-color: #fff;
+    }
+    .wf-field-item {
+      min-height: 38px;
+    }
+    .wf-time-field-wrapper {
+      display: flex;
+      flex: 1;
+    }
+    .wf-time-field-wrapper select {
+      margin-left: 10px;
+    }
+    .wf-form-component .wf-field-error,
+      .wf-form-component .wf-field-help-text {
+      text-align: left;
+    }
+    .wf-field-error {
+      color: #FF5050;
+      font-size: 12px;
+      margin-top: 4px;
+      display: none;
+      animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+    .wf-field-help-text {
+      color: #515159;
+      font-size: 12px;
+      margin-top: 5px;
+      }
+    .wf-field-help-text-link{
+      text-decoration: none;
+    }
+    .wf-field-checkbox {
+      cursor: pointer;
+      border-radius: 3px;
+      min-width: 14px;
+      min-height: 20px;
+      box-sizing: initial;
+      accent-color: #1980d8;
+      margin-right: 10px;
+      margin-bottom: auto;
+    }
+    .wf-field-dropdown-date {
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .wf-field-dropdown-date {
+      border: 1px solid #BDC8D3;
+      }
+    .wf-field-dropdown-date:hover {
+      border: 1px solid #65C199;
+    }
+    .wform-field-item-upload-input {
+      min-height: 5rem;
+      background-color: #FBFCFD;
+      border: 1px dashed #bdc8d3;
+      line-height: 2.1;
+      cursor: pointer;
+    }
+    .wform-field-item-upload-input:focus {
+      border: 1px dashed #bdc8d3;
+    }
+    .wform-file-upload-input-label {
+      background-color: #fff;
+      background-image: linear-gradient(to top, #F5F8FA, #ffffff);
+      color: #212129;
+      border-color: #d3dbe3;
+      border: 1px solid #d3dbe3;border-radius: 4px;
+      padding: 0.7rem 2rem;
+      font-size: 1.4rem;
+      right: 1rem;
+      transform: translateY(-50%);
+      top: 50%;
+      position: absolute;
+      }
+    input[type='file']::file-selector-button, input[type='file']::-webkit-file-upload-button{
+     opacity: 0; 
+     width: 0;
+     height: 28px;
+    }.wf-row[data-ux-field-appearance='captcha'] .wf-field{
+      display: flex;
+      align-items: center;
+    }
+    .wform-field-item-captcha-input{
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .wf-field-captcha-img-wrap{
+      border: 1px solid #BDC8D3;
+      border-radius: 4px;
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      height: initial;
+      overflow: hidden;
+      min-width: 120px;
+    }
+    .wf-field-captcha-img{
+      height: 38px;
+      width: 100%;
+    }
+    .reload-img{
+      font-size: 23px;
+      color: #4B5569;
+      margin-right: 5px;
+    }
+    .reload-captcha{
+      margin-left: 10px;
+      user-select: none
+    }
+    .wf-btn {
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: inherit;
+    }
+    .wf-btn[data-ux-btn-type='default'] {
+      border-radius: 0;
+    }
+    .wf-btn[data-ux-btn-type='primary'] {
+      border-radius: 4px;
+    }
+    .wf-btn[data-ux-btn-type='secondary'] {
+      border-radius: 20px;
+    }
+    .wform-btn-wrap {
+      display: flex;
+      margin-top: 40px;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1;
+    }
+    .wform-poweredby-container {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background-color: #23384F;
+      font-size: 13px;
+      padding: 6px 8px;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+    }
+    
+    /* ==================== * MultiPicklist Styles * ==================== */
+    .multiselect.wf-field-dropdown {
+      padding: 0;
+      cursor: text;
+    }
+    .multiselect.dropbox-active{
+      border-color: #30c384;
+      border-radius: 4px 4px 0 0;
+    }
+    .multiselect.no-results-elem{
+      border-radius: 4px; 
+    }
+    .selected-options.selected-options-field {
+      display: none;
+    }
+    .selected-options{
+      max-height: 150px;
+      overflow: auto;
+      padding: 3px 5px 7px 5px;
+      border-radius: 4px 4px 0 0;
+      border-bottom: 0;
+      min-height: 38px;
+      height: 38px;
+      transition: 0.3s all; 
+    }
+    .selected-options.hide-opt-list{  
+      min-height: 0;  
+      height: 0;
+      padding: 0;
+    }
+    .selected-options.set-opt-list{  
+      height: auto; 
+    }
+    .selected-options.drp-dwn-no-val{
+      border-right: unset !important;
+    }
+    .dropdown-input.drop-box-closed{
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    .dropdown-input.drop-box-active{
+      border-top-right-radius: 0 !important;
+      border-radius: 4px;
+    }
+    .dN{
+      display: none !important;
+    }
+    .dropdown {
+      position: relative;
+      width: 100%;
+      height: 36px;  
+      transition: 0.3s all;
+    }
+    .dropdown.hide-dropdown{
+      height: 0;
+    }
+    .dropdown-input{
+      width: 100%;
+      border: none;
+      outline: none;
+      height: 30px;
+      padding: 5px;
+      border-radius: 4px;
+      border-radius: 4px 4px 0 0;
+      padding-left: 14px;
+    }
+    .dropdown-input::before{
+      display: block;
+      content: '';
+    }
+    .dropdown-input::placeholder{
+      color: #919191;
+      font-size: 14px;
+    }
+    .dropdown-menu {
+      position: absolute;
+      display: none;
+      background-color: #fff;
+      border: 1px solid #BDC8D3;
+      border-radius: 0 0 5px 5px;
+      max-height: 200px;
+      overflow-y: auto;
+      width: calc(100% + 2px);
+      left: -1px;
+      z-index: 3;
+      top: 37px;  
+      transition: 0.3s all; 
+    }
+    .dropdown-menu.hide-the-inp{
+      top: 0;
+    }
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu.dropdown-focus{
+      border-color: #30c384;
+      border-top: 1px solid #E6EBF1;
+    }
+    .multiselect.dropbox-active .dropdown-input{
+      border-top: 0;
+      border-bottom: 0;
+      padding-bottom: 17px;
+      padding-top: 19px;
+      border-left-color: transparent;
+    }
+    .multi-tag{
+      background-color: #CEEBFF;
+      padding: 2px 5px 3px 10px;
+      border-radius: 15px;
+      margin: 5px 5px 0 2px;
+      display: inline-flex;
+      max-width: 96%;
+    }
+    .tag-data-val{
+      cursor: default;
+      max-width: 550px;
+    }
+    .no-results{
+      cursor: default !important;
+      text-align: center;
+      color: #919191;
+      font-size: 14px;
+    }
+    .no-results:hover{
+      background-color: unset !important;
+    }
+    .opt-hide{
+      display: none;
+    }
+    .opt-show{
+      display: block;
+    }
+    .tag-close-btn{
+      margin-left: 3px;
+      padding: 0px 4px 0px;
+      border-radius: 50%;
+      opacity: 0.5;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .multi-tag:hover .tag-close-btn{
+      opacity: 1;
+    }
+    .option{
+      padding: 10px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f5f8;
+    }
+    .option:hover{
+      background-color: #f5f8fa;
+    }
+    .input-not-active{
+      display: none;
+    }
+    .ellipsis {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    /* ==================== * MultiPicklist Styles * ==================== */
+    
+    /* ==================== *** Form Alignment *** ==================== */
+    .wf-form-component:not([data-ux-form-alignment='top']) .wf-row {
+      display: flex;
+    }
+    .wf-form-component:not([data-ux-form-alignment='top']) .wf-label {
+      word-break: break-word;
+      width: 30%;
+      padding: 1.2rem 2rem 0;
+    }
+    .wf-form-component[data-ux-form-alignment='left'] .wf-label {
+      text-align: left;
+      padding-left: 0;
+    }
+    .wf-form-component[data-ux-form-alignment='right'] .wf-label {
+      text-align: right;
+    }
+    .wf-form-component[data-ux-form-alignment='center'] .wf-label {
+      text-align: center;
+    }
+    .wform-btn-wrap[data-ux-pos='left'] {
+      justify-content: flex-start;
+    }
+    .wform-btn-wrap[data-ux-pos='center'] {
+      justify-content: center;
+    }
+    .wform-btn-wrap[data-ux-pos='right'] {
+      justify-content: flex-end;
+    }
+    .wf-form-component:not([data-ux-form-alignment='top']) .wf-field {
+      width: 70%;
+    }
+    .wf-form-component[data-ux-form-alignment='top'] .wf-label{
+      padding-top:0;
+    }
+    .wf-form-component[data-ux-form-alignment='top'] .reload-captcha{
+      text-align: right;
+    }
+    .wf-row[data-ux-field-appearance='captcha'] .wf-field-inner{
+      height: 38px;
+    }
+    .wf-row[data-ux-field-appearance='captcha'] .wf-field.wf-field-error-active{
+      flex-wrap: wrap;
+    }
+    .wf-row[data-ux-field-appearance='captcha'] .wf-field-error{
+      flex-basis: 100%;
+      width:100%;
+    }
+    /* ==================== *** Form Alignment ends *** ==================== */
+    
+    /* ==================== *** css animations *** ==================== */
+    @keyframes shake {
+      10%,90% {transform: translate3d(-1px, 0, 0);}
+      20%,80% {transform: translate3d(2px, 0, 0);}
+      30%,50%,70% {transform: translate3d(-4px, 0, 0);}
+      40%,60% {transform: translate3d(4px, 0, 0);}
+    }
+    /* ==================== *** css animations ends *** ==================== */
+    
+    /* ==================== *** Mediaquery *** ==================== */
+    @media screen and (max-width: 1024px) {
+      .wf-wrapper {
+      max-width: 700px;
+      width: calc(100% - 40px);
+      border: 0;
+    }
+      .wf-field input[type=text],
+      .wf-field select,
+      .wf-field textarea {
+        width: 100% !important;
+      }
+      .wf-label:empty {
+        display: none;
+      }
+    .wf-field-checkbox {
+      min-width: 18px;
+      min-height: 18px;
+    }
+    }
+    @media screen and (max-width: 768px) {
+      .wf-wrapper {
+      max-width: 700px;
+      width: calc(100% - 40px);
+      border: 0;
+    }
+    .wf-field input[type=text],
+      .wf-field select,
+      .wf-field textarea {
+      width: 100% !important;
+      }
+    .wf-label:empty {
+      display: none;
+      }
+    .wf-form-component[data-ux-form-alignment='top'] .wform-btn-wrap {
+      justify-content: flex-start;
+    }
+    }
+    @media screen and (max-width: 590px) {
+    .wf-parent {
+      padding: 20px 0;
+    }
+    .wf-wrapper {
+      width: calc(100% - 40px) !Important;
+      border: 0;
+    }
+    .wf-form-component {
+      padding: 20px;
+      padding-bottom:60px;
+    }
+    .wf-field input[type=text],
+    .wf-field select,
+    .wf-field textarea {
+      width: 100% !important;
+    }
+    .wf-label:empty {
+      display: none;
+    }
+    .wf-row[data-ux-field-appearance='date-time'] .wf-field-inner{
+      flex-direction: column;
+    }
+    .wf-row[data-ux-field-appearance='date-time'] .wf-time-field-wrapper{
+      margin-top: 10px;
+    }
+    .wf-row[data-ux-field-appearance='date-time'] .wf-field-item:first-child{
+      margin-left: 0;
+    }
+    .wf-row[data-ux-field-appearance='date-time'] .wf-field-item{
+      flex: 1;
+    }
+    .wf-row[data-ux-field-appearance='captcha'] .wf-field{
+      flex-direction: column;
+    }
+    .wf-row[data-ux-field-appearance='captcha'] .reload-captcha{
+      margin-left: auto;
+    }
+    .wf-row[data-ux-field-appearance='captcha'] .wf-field-inner{
+      width: 100%;
+    }
+    }
+    /* ==================== *** Mediaquery ends *** ==================== */
+    </style>
+    <iframe id='hidden2828011000000553019Frame' name='hidden2828011000000553019Frame' style='display: none;' class='iframe-container'></iframe><div class='wf-parent' style='background-color: #EAEEF2'>
+      <div class='wf-wrapper' id='BiginWebToRecordFormDiv2828011000000553019'>
+      <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+      <META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
+      <form id='BiginWebToRecordForm2828011000000553019' name='BiginWebToRecordForm2828011000000553019' class='wf-form-component' data-ux-form-alignment='top' style='font-family: Arial;position: relative;font-size:15px;' method='POST' enctype='multipart/form-data' target='hidden2828011000000553019Frame' onSubmit='javascript:document.charset="UTF-8"; return validateForm2828011000000553019()' accept-charset='UTF-8'>
+    <!-- Do not remove this code. -->
+       <input type='text' style='display:none;' name='xnQsjsdp' value='5a6fa759fd3407b4207a8747a490b9900478ca3ec72b969a07b9bb4a422a7d03'/>
+       <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
+       <input type='text' style='display:none;' name='xmIwtLD' value='7797b963dc2a16745958b931bc1b7b88100d0620fc2643f05f759800ec5d0689a582f19f119f2ac99f92eba6737f8eac'/>
+       <input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='/>
+       <input type='hidden' name='rmsg' id='rmsg' value='true'/>
+       <input type='text' style='display:none;' name='returnURL' value='null' />
+       <div class='wf-header'>Form123</div>
+       <div id='elementDiv2828011000000553019' class='wf-form-wrapper'>
+          <div class='wf-row'>  
+             <div class='wf-label'>Last Name</div>
+             <div class='wf-field wf-field-mandatory'>
+              <div class='wf-field-inner'>
+              <input name='Last Name' maxlength='80' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
+              </div>
+             </div>
+          </div>
+          <div class='wf-row'>  
+             <div class='wf-label'>MultiPickOpt1231</div>
+             <div class='wf-field wf-field-mandatory'>
+              <div class='wf-field-inner'>
+              <div id='multiCONTACTCF1' class='multiselect wf-field-dropdown' onclick='showDropDown2828011000000553019(this)'>
+                 <div class='selected-options hide-opt-list wf-field-item selected-options-field'></div>
+                    <div class='dropdown'>
+                       <input type='text' class='dropdown-input input-not-active wf-field-item wf-field-input' data-wform-field='select-multiple' oninput="checkForError(this)" /> 
+                       <input type='text' name='CONTACTCF1' multipick='true' style='display:none;' />
+                       <ul class='dropdown-menu'>
+                       </ul>
+                    </div>
+                 </div>
+              </div>
+             </div>
+          </div>
+          <div class='wf-row'>  
+             <div class='wf-label'>SinglePick13</div>
+             <div class='wf-field wf-field-mandatory'>
+              <div class='wf-field-inner'>
+              <select name='CONTACTCF2' class='wf-field-item wf-field-dropdown' data-wform-field='select' onchange='removeError(this);'>
+                 <option value='-None-'>-None-</option>
+                 <option value='123213'>123213</option>
+                 <option value='eofivnfejk&#x20;nkjdf&#x20;df'>eofivnfejk nkjdf df</option>
+                 <option value='dkjf&#x20;nkjdfn&#x20;kjdf'>dkjf nkjdfn kjdf</option>
+              </select>
+              </div>
+             </div>
+          </div>
+          <div class='wf-row'>  
+             <div class='wf-label'>MultiPickNew</div>
+             <div class='wf-field'>
+              <div class='wf-field-inner'>
+              <div id='multiCONTACTCF3' class='multiselect wf-field-dropdown' onclick='showDropDown2828011000000553019(this)'>
+                 <div class='selected-options hide-opt-list wf-field-item selected-options-field'></div>
+                    <div class='dropdown'>
+                       <input type='text' class='dropdown-input input-not-active wf-field-item wf-field-input' data-wform-field='select-multiple' oninput="checkForError(this)" />
+                       <input type='text' name='CONTACTCF3' multipick='true' style='display:none;' />
+                       <ul class='dropdown-menu'>
+                       </ul>
+                    </div>
+                 </div>
+              </div>
+             </div>
+          </div>
+          <div class='wform-btn-wrap' data-ux-pos='left'>
+             <input id='formsubmit' type='submit' class='wf-btn' data-ux-btn-type='default' style='background-color:#1980d8; color: #fff; border: 1px solid #1980d8;width: auto;' value='Submit'/>
+          </div>
+      </div>
+      <a class='wform-poweredby-container' target='_blank' style='color: #fff;text-decoration: none;display: flex;align-items: center;font-weight: 500;' href='https://localzoho.com/bigin/?utm_source=biginwebforms&utm_medium=organic&utm_id=product' id='poweredBy2828011000000553019'>
+        <span style='padding-right: 5px;color: #C5D4E5;'>Powered by</span>
+        <img src='https://bigindev.localzoho.com/images/bigin-logo-xs.svg' style='margin-right: 5px;'/>
+        <span>Bigin</span>
+      </a>
+      </form>
+      </div>
+    </div>
+    <script>
+         var mndFileds=new Array('Last\x20Name','CONTACTCF1','CONTACTCF2');
+         var fldLangVal=new Array('Last Name','MultiPickOpt1231','SinglePick13');
+        var wfInnerWidth = window.innerWidth;
+        if(wfInnerWidth <= 768){
+           document.forms['BiginWebToRecordForm2828011000000553019'].setAttribute('data-ux-form-alignment', 'top');
+        }
+        var name='';
+        var email='';
+       function removeError(fieldObj) { 
+          var parentElement = fieldObj.closest('.wf-field'),
+             childEle = parentElement.getElementsByClassName('wf-field-error')[0];
+          if(childEle) {
+             parentElement.classList.remove('wf-field-error-active');
+             parentElement.removeChild(parentElement.getElementsByClassName('wf-field-error')[0]);
+             parentElement.parentElement.classList.remove('wf-row-with-supplementary');
+          }
+       }
+       function setError(fieldObj, label) { 
+          var parentElement = fieldObj.closest('.wf-field'),
+            childEle = parentElement.getElementsByClassName('wf-field-error')[0];
+          if(!childEle) {
+             var spanEle = document.createElement('SPAN');
+             spanEle.setAttribute('class', 'wf-field-error wf-row-with-supplementary');
+             spanEle.innerHTML = label;
+             parentElement.append(spanEle);
+             parentElement.classList.add('wf-field-error-active');
+             parentElement.parentElement.classList.add('wf-row-with-supplementary');
+          }
+       }
+       function validateFields2828011000000553019() {
+          var isReturn = true;
+          var form = document.forms['BiginWebToRecordForm2828011000000553019'];
+          var validateFld = form.querySelectorAll('[fvalidate=true]');
+          var i;
+          for (i = 0; i < validateFld.length; i++)
+          {
+             var validateFldVal = validateFld[i].value;
+             if(validateFldVal !== '') {
+              var fLabel = validateFld[i].parentElement.parentElement.parentElement.getElementsByClassName('wf-label')[0].innerHTML;
+              switch(validateFld[i].getAttribute('ftype')) {
+              case 'email':
+                 if(validateFldVal.match(/^([A-Za-z0-9-._%'+/]+@[A-Za-z0-9.-]+.[a-zA-Z]{2,22})$/) === null) {
+                    setError(validateFld[i], 'Enter valid ' + fLabel);
+                    isReturn = false;
+                 }
+                 break;
+              case 'number':
+                 if(validateFldVal.match(/^[0-9]+$/) === null) {
+                    setError(validateFld[i], 'Enter valid ' + fLabel);
+                    isReturn = false;
+                  }
+                 break;
+              case 'double':
+                 if(validateFldVal.match(/^[0-9]*(\.[0-9]{0,2})?$/) === null) {
+                    setError(validateFld[i], 'Enter valid ' + fLabel);
+                    isReturn = false;
+                  }
+                 break;
+              case 'mobile':
+                  if(validateFldVal.match(/^[0-9a-zA-Z+.()\-;\s]+$/) === null) {
+                    setError(validateFld[i], 'Enter valid ' + fLabel);
+                    isReturn = false;
+                  }
+                 break;
+               }
+             }
+          }
+          return isReturn;
+       }
+       function checkForError(inputFld){
+        if(inputFld && inputFld.value !== '') {
+          this.removeError(inputFld);  
+        }
+       }
+       function showDropDown2828011000000553019(_c){
+          var _dd = _c.getElementsByClassName('dropdown')[0],
+           _ddInput = _c.getElementsByClassName('dropdown-input')[0],
+           ddM = _c.querySelector('.dropdown-menu'),
+           _sOpt = _c.getElementsByClassName('selected-options')[0];
+           if(_ddInput.value !== '') { 
+            this.removeError(_ddInput); 
+           }
+          if(ddM.childElementCount === 0) {
+             _c.classList.remove('dropbox-active');
+             _sOpt.classList.add('drp-dwn-no-val');
+             return false;
+          }
+          document.querySelectorAll('.dropdown').forEach(dropdwn=>{
+              if(!dropdwn.classList.contains('hide-dropdown')) {
+                  dropdwn.classList.add('hide-dropdown');  
+              }
+              dropdwn.querySelectorAll('.dropdown-input').forEach(inp=>{
+                if(!inp.classList.contains('dN')) {
+                  inp.classList.add('dN');
+                }
+              });
+            });
+          let dds = document.querySelectorAll('.dropdown');
+          if(dds) { 
+             dds.forEach(ddElem=>{
+              if(ddElem.classList.contains('open')) {
+                 ddElem.classList.remove('open');
+              }
+             });
+          } 
+          _sOpt.classList.remove('drop-box-closed', 'drp-dwn-no-val', 'selected-options-field');
+          _c.closest('.wf-form-wrapper').querySelectorAll('.multiselect').forEach(ddWrap=>{
+             if(ddWrap.classList.contains('dropbox-active')) {
+              ddWrap.classList.remove('dropbox-active');
+             }
+          });
+          _c.classList.add('dropbox-active');
+          ddM.classList.add('dropdown-focus');
+          _ddInput.classList.remove('input-not-active', 'drop-box-closed');
+          _ddInput.setAttribute('placeholder', 'Search Here');
+          
+          if(ddM.childElementCount > 1) {
+            _c.querySelector('.dropdown').classList.remove('hide-dropdown');
+          }  
+          let options = _c.querySelectorAll('.option'); 
+          options.forEach(option=>{
+            if(option.classList.contains('no-results')) { 
+              if(!_ddInput.classList.contains('dN')) {
+                  _ddInput.classList.add('dN');  
+              }
+            }
+          }); 
+          if(_dd.classList.contains('dN')) {
+            _dd.classList.remove('dN'); 
+          }
+          _dd.classList.add('open'); 
+          if(_ddInput.classList.contains('dN')) {
+            _ddInput.classList.remove('dN');  
+          } 
+          _c.querySelector('.dropdown').classList.remove('hide-dropdown'); 
+          _ddInput.focus(); 
+       }
+       function createDropdownOptions2828011000000553019(eleID, optionsData, sOpt) {
+          var eleDiv = document.getElementById(eleID),
+           _dd = eleDiv.getElementsByClassName('dropdown')[0],
+           _ddM = eleDiv.querySelector('.dropdown-menu'),
+           _ddInput = eleDiv.getElementsByClassName('dropdown-input')[0],
+           _sOpt = eleDiv.getElementsByClassName('selected-options')[0],
+           _msPar = eleDiv.closest('.wf-field'); 
+          _ddM.innerHTML = '';  
+    
+          optionsData.forEach(function(optionValue) {
+             if (!sOpt.includes(optionValue)) {
+              var optionContainer = document.createElement('div');
+              optionContainer.classList.add('option');
+              var optionTag = document.createElement('span');
+              optionTag.textContent = optionValue;
+              optionTag.dataset.value = optionValue;
+              optionTag.classList.add('option-txt');
+              optionContainer.appendChild(optionTag);
+              _ddM.appendChild(optionContainer);
+             }
+          });
+          var options = _ddM.querySelectorAll('.option');
+          options.forEach(function(option) {
+             option.addEventListener('click', function() {
+              var optionValue = this.querySelector('span').dataset.value;
+              addSelectedOption(eleID, optionsData, sOpt, optionValue);
+              if(_sOpt.childElementCount > 0){
+                 _sOpt.classList.remove('hide-opt-list'); 
+                 _ddInput.classList.add('drop-box-active');
+              }
+              if(_sOpt.childElementCount > 1) {
+                _sOpt.classList.add('set-opt-list');     
+              }
+              // 
+              if(_ddM.childElementCount === 0){
+                _dd.classList.add('hide-dropdown'); 
+                 if(option && !option.classList.contains('no-results')) {
+                    let div = document.createElement('div'),
+                    span = document.createElement('span');
+                    div.textContent = 'No options found';
+                    span.setAttribute('data-value', 'No results');
+                    div.setAttribute('class', 'option no-results');
+                    div.appendChild(span);
+                    _ddM.appendChild(div);
+                    _ddM.classList.add('hide-the-inp');
+                    _ddInput.classList.add('dN');
+                    eleDiv.classList.add('no-results-elem');
+                    eleDiv.closest('.wf-field-inner').classList.add('no-results-elem');
+                 }else {
+                    _dd.classList.add('dN');
+                    _ddInput.classList.remove('dN');
+                    eleDiv.classList.remove('no-results-elem');
+                    eleDiv.closest('.wf-field-inner').classList.remove('no-results-elem');
+                 }
+              } 
+             });
+          });
+          if(_msPar.classList.contains('wf-field-error-active')){
+              this.removeError(_ddInput);  
+          }
+       }
+        function addSelectedOption(eleID, optionsData, sOpt, optionValue) {
+          var eleDiv = document.getElementById(eleID),
+           _sOpt = eleDiv.getElementsByClassName('selected-options')[0],
+           _ddInput = eleDiv.getElementsByClassName('dropdown-input')[0]; 
+    
+          if (!sOpt.includes(optionValue)) {
+             sOpt.push(optionValue); 
+    
+             var optionContainer = document.createElement('div');
+             optionContainer.classList.add('selected-option', 'multi-tag'); 
+    
+             var optionTag = document.createElement('span');
+             optionTag.classList.add('tag-data-val', 'ellipsis');
+             optionTag.textContent = optionValue;
+             optionTag.dataset.value = optionValue;
+             optionContainer.appendChild(optionTag);
+    
+             var removeButton = document.createElement('span');
+             removeButton.textContent = 'x';
+             removeButton.classList.add('remove-button', 'tag-close-btn');
+             removeButton.addEventListener('click', function(clseBtn) {
+              var optionContainer = this.parentNode,
+               optionValue = optionContainer.querySelector('span').dataset.value,
+               dropdown = document.getElementsByClassName('dropdown')[0];
+              let closeDD = clseBtn && clseBtn.currentTarget.closest('.multiselect') ? clseBtn.currentTarget.closest('.multiselect').getElementsByClassName('dropdown')[0] : undefined;
+              if(closeDD && closeDD.classList.contains('dN')) {
+                 closeDD.classList.remove('dN');
+              }
+              _sOpt.removeChild(optionContainer);
+              var index = sOpt.indexOf(optionValue);
+              if (index > -1) {
+                 sOpt.splice(index, 1);
+              }       
+              if(_sOpt.childElementCount === 0){ 
+                 _sOpt.classList.add('hide-opt-list'); 
+                 _ddInput.classList.remove('drop-box-active');
+                 _sOpt.classList.remove('set-opt-list');
+              }
+              let _ddM = closeDD.getElementsByClassName('dropdown-menu')[0];
+              if(_ddM && _ddM.childElementCount > 0) {
+                _ddInput.classList.remove('dN');  
+                closeDD.classList.remove('hide-dropdown');
+                closeDD.querySelector('.dropdown-menu').classList.remove('hide-the-inp');
+              }
+              if(closeDD.closest('.wf-field-inner').classList.contains('no-results-elem')) {
+                closeDD.closest('.wf-field-inner').classList.remove('no-results-elem');
+                closeDD.closest('.wf-field-inner').querySelector('.multiselect').classList.remove('no-results-elem'); 
+              }
+                 createDropdownOptions2828011000000553019(eleID, optionsData, sOpt);
+             });
+             optionContainer.appendChild(removeButton);
+             _sOpt.appendChild(optionContainer);
+          }
+          _ddInput.value = ''; // Clear the input field
+          _ddInput.focus(); // Set focus back to the input field
+          createDropdownOptions2828011000000553019(eleID, optionsData, sOpt);
+       }
+       document.addEventListener('click', function(e){ 
+          let targetClasses = e.target.classList,
+           classNames = ['multiselect', 'selected-options', 'dropdown-input', 'option', 'option-txt', 'selected-option', 'remove-button', 'dropdown'];
+          if(classNames.some(className => targetClasses.contains(className))){
+             return true;
+          }else{
+             var mLen = multiPickFields.length;
+             for(i=0; i<mLen; i++) {
+             var dropdownMenu = document.querySelector('.dropdown-menu'),
+            dropdown = document.getElementsByClassName('dropdown')[i],
+            multiselectBox = document.getElementsByClassName('multiselect')[i],
+            selectedOptions = document.getElementsByClassName('selected-options')[i],
+            dropdownInput = document.getElementsByClassName('dropdown-input')[i],
+            options = dropdownMenu.querySelectorAll('.option');
+             noResults = document.getElementsByClassName('no-results')[i];
+             dropdown.classList.remove('open');
+             multiselectBox.classList.remove('dropbox-active');
+             dropdownMenu.classList.remove('dropdown-focus');
+             selectedOptions.classList.add('drop-box-closed');
+             dropdownInput.classList.add('drop-box-closed');
+             if(dropdownInput.value){
+              dropdownInput.value = '';
+              options.forEach(function(option){
+              if(option.classList.contains('opt-hide')){
+                 option.classList.remove('opt-hide')
+              }
+              });
+              if(noResults) {
+                 noResults.remove();
+              }
+             }
+             if(selectedOptions.childNodes.length < 1){
+              selectedOptions.classList.add('selected-options-field');
+              dropdownInput.removeAttribute('placeholder');
+             }else{
+              selectedOptions.classList.remove('selected-options-field');
+             }
+             
+             if(!dropdown.classList.contains('open')) {
+              dropdown.classList.add('hide-dropdown');
+              dropdownInput.classList.add('dN'); 
+             }else {
+              dropdownInput.classList.remove('dN'); 
+              dropdown.classList.remove('hide-dropdown');
+             }
+          
+             }
+          }
+       });
+       document.querySelectorAll('.dropdown-input').forEach(function(ddEle) {
+          ddEle.addEventListener('input', function (ele) {
+             var dropdownInput = ele.srcElement,
+             dropdownMenu = dropdownInput.parentElement.querySelector('.dropdown-menu'),
+             searchText = dropdownInput.value.toLowerCase(),
+             noResults = document.getElementsByClassName('no-results')[0],
+             div = document.createElement('div'),
+             span = document.createElement('span'),
+             options = dropdownMenu.querySelectorAll('.option');
+             span.setAttribute('data-value', 'No results');
+             div.setAttribute('class', 'option no-results');
+             div.textContent = 'No options found';
+             options.forEach(function(option) {
+              let optionValue = option.querySelector('span').dataset.value.toLowerCase();
+              if (optionValue.includes(searchText)) {
+                 option.classList.add('opt-show');
+                 option.classList.remove('opt-hide');
+              } else {
+                 option.classList.remove('opt-show');
+                 option.classList.add('opt-hide');
+              }
+             });
+             for(i = 0; i < options.length; i++){
+              if(options[i].classList.contains('opt-hide')){
+                 if(i == options.length - 1){
+                    div.appendChild(span);
+                    if(options[i].classList.contains('no-results')){
+                       if(noResults.classList.contains('opt-hide')){
+                        noResults.classList.remove('opt-hide');
+                       }
+                       return false;
+                    }else{
+                       dropdownMenu.appendChild(div);
+                    }
+                 } 
+              } else { 
+                  if(noResults) {
+                    noResults.remove();
+                  }
+                 return false;
+              }
+             }
+          });
+       });
+       function validateMultiPick2828011000000553019() {
+          var argL = arguments.length;
+          var form = document.forms['BiginWebToRecordForm2828011000000553019'];
+          for (i = 0; i < argL; i++) {
+             var pickOptions = arguments[i].toString().replaceAll(',',';'),
+            multiPickEle = form.querySelector('[name=' + multiPickFields[i]+']');
+             multiPickEle.value = pickOptions;
+          }
+          return true;
+       }
+    
+        function checkMandatory2828011000000553019() {
+        var isReturn = true;
+        var isNotCaptcha = false;
+        for(i=0;i<mndFileds.length;i++) {
+          var fieldObj=document.forms['BiginWebToRecordForm2828011000000553019'][mndFileds[i]];
+          if(fieldObj) {
+          if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+            if(fieldObj.type =='file'){
+              setError(fieldObj, 'Please select a file to upload.'); 
+              isReturn = false;
+            }
+            else if(fieldObj.getAttribute('multipick') === 'true'){
+              if(window['sopt' + mndFileds[i]].length == 0) {
+                setError(fieldObj, fldLangVal[i] + ' cannot be empty');
+                 isReturn = false;
+              }
+            } 
+            else {
+              setError(fieldObj, fldLangVal[i] + ' cannot be empty');
+            isReturn= false;
+            }
+          }  else if(fieldObj.nodeName=='SELECT') {
+            if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
+            setError(fieldObj, fldLangVal[i] +' cannot be none.');
+            isReturn = false;
+             }
+          } else if(fieldObj.type =='checkbox'){
+            if(fieldObj.checked == false){
+            setError(fieldObj, 'Please accept  '+fldLangVal[i]);
+            isReturn= false;
+            } 
+           } 
+          }
+        }
+         isNotCaptcha = true;
+        if(!validateFields2828011000000553019()){isReturn = false;}
+        if(isReturn){
+          if(!validateMultiPick2828011000000553019(soptCONTACTCF1, soptCONTACTCF3)){isReturn = false;}
+        }
+        if(!isReturn){
+          var errEle = document.getElementsByClassName('wf-field-error');
+          if(errEle && errEle.length >0){
+            var inputEle = errEle[0].parentElement.getElementsByTagName('input');
+            if(inputEle && inputEle.length == 0) {
+              inputEle = errEle[0].parentElement.getElementsByTagName('select');
+            }
+            if(inputEle && inputEle.length > 0) {
+              inputEle[0].focus();
+            }
+          }
+        }else if(isNotCaptcha){
+          document.getElementById('formsubmit').disabled = true;
+        }
+        return isReturn; 
+        }
+    
+         
+        document.getElementById('hidden2828011000000553019Frame').addEventListener('load', function () {
+          try {
+            document.getElementById('formsubmit').disabled = false;
+            var doc = arguments[0].currentTarget.contentWindow.document;
+            if(doc.body.childElementCount !== 0) {
+              arguments[0].currentTarget.style.display = 'block';
+              document.getElementById('BiginWebToRecordForm1000000105005').style.display = 'none';
+            }
+          } catch (error) {
+            arguments[0].currentTarget.style.display = 'block';
+            document.getElementById('BiginWebToRecordForm2828011000000553019').style.display = 'none'
+          }
+        });
+        var multiPickFields=["CONTACTCF1","CONTACTCF3"]; 
+       _optCONTACTCF1	=["12kj 32k1j213213","fkj njkfgnjklfg g","1k2n3jk213 213k213","g nkfjg nkjfgn gf gf","Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]	;
+       soptCONTACTCF1	=[];
+       createDropdownOptions2828011000000553019('multiCONTACTCF1', _optCONTACTCF1, soptCONTACTCF1); 
+    
+       _optCONTACTCF3	=["g nfkjngkjgfn kjgf","fgjk njgf","kdj nkjfkjgf","fkjg nkjgfn kjgfn jkfgn"]	;
+       soptCONTACTCF3	=[];
+       createDropdownOptions2828011000000553019('multiCONTACTCF3', _optCONTACTCF3, soptCONTACTCF3); 
+    
+    </script>
+        <script id='wf_script' src='https://bigindev.localzoho.com/crm/WebformScriptServlet?rid=7797b963dc2a16745958b931bc1b7b88100d0620fc2643f05f759800ec5d0689a582f19f119f2ac99f92eba6737f8eacgid5a6fa759fd3407b4207a8747a490b9900478ca3ec72b969a07b9bb4a422a7d03'></script>
